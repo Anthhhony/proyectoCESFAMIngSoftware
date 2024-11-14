@@ -1,5 +1,5 @@
 from django.contrib import admin
-from AppBiblioteca.models import Libro, Categoria, Cliente, Prestamo, Usuario
+from AppCESFAM.models import Libro, Categoria, Cliente, Prestamo, Usuario
 
 # Register your models here.
 @admin.register(Libro)

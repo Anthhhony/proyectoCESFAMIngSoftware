@@ -1,5 +1,5 @@
 """
-ASGI config for proyectoBiblioteca project.
+ASGI config for proyectoCESFAM project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'proyectoBiblioteca.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'proyectoCESFAM.settings')
 
 application = get_asgi_application()

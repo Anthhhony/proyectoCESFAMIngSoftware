@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class AppbibliotecaConfig(AppConfig):
+class AppCESFAMConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'AppBiblioteca'
+    name = 'AppCESFAM'

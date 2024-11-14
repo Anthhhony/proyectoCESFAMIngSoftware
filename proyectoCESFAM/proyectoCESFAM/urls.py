@@ -1,4 +1,4 @@
-"""proyectoBiblioteca URL Configuration
+"""proyectoCESFAM URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -17,7 +17,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from AppBiblioteca.views import vista, lista_prestamos, procesar_prestamo, prestamos_confirmados, finalizar_prestamo, eliminar_prestamo, mostrar_libros, agregar_libro, editar_libro, eliminar_libro, register, buscar_usuario, mostrar_clientes, agregar_cliente, editar_cliente, eliminar_cliente
+from AppCESFAM.views import vista, lista_prestamos, procesar_prestamo, prestamos_confirmados, finalizar_prestamo, eliminar_prestamo, mostrar_libros, agregar_libro, editar_libro, eliminar_libro, register, buscar_usuario, mostrar_clientes, agregar_cliente, editar_cliente, eliminar_cliente
 
 urlpatterns = [
     path('admin/', admin.site.urls),

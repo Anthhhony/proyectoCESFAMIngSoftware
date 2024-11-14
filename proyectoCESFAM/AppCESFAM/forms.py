@@ -1,5 +1,5 @@
 from django import forms
-from AppBiblioteca.models import Usuario, Libro, Cliente
+from AppCESFAM.models import Usuario, Libro, Cliente
 
 class formularioLogin(forms.Form):
     rut = forms.CharField(max_length=12)
