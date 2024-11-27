@@ -13,7 +13,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand logo" href="{%url "menu-principal" %}">
-                <i class="bi bi-book"></i> Biblioteca - Caldera
+                <i class="bi bi-book"></i> CESFAM - Caldera
             </a>
             <div class="div-imagenLogoCaldera">
                 <img  class="imagenLogoCaldera" src="{% static 'img/PngItem_5278850.png'%}">
@@ -40,49 +40,7 @@
       </ul>
 
       <form class="mb-4" method="get">
-      <h1 class="mb-4" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center; margin: 10px;">Libros disponibles para préstamos</h1>
-      {% if libros %}
-      <form class="mb-4" method="get" >
-        <div class="input-group" style="width: 45%; float: right; margin-bottom: 30px; margin-right: 10px;">
-            <input type="text" class="form-control" name="buscar" placeholder="Buscar por título o ISBN" style="width: 90%; position: relative; right: 150px; top: 100px;">
-            <button type="submit" class="btn btn-primary" style="background-color: #4A148C; position:relative; right: 150px; top:100px"><i class="bi bi-search"></i></button>
-        </div>
-    </form>
-      <table class="table table-bordered table-striped" style="position: relative; top: 100px;">
-        <thead class="table-dark">
-            <tr>
-                <th>ISBN</th>
-                <th>Título</th>
-                <th>Disponibilidad</th>
-                <th>Acción</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for libro in libros %}
-            <tr>
-                <td>{{ libro.isbn }}</td>
-                <td>{{ libro.titulo }}</td>
-                {% if libro.disponibilidad %}
-                <td><i class="bi bi-check-circle-fill text-success"></i></td>
-                {% else %}
-                <td><i class="bi bi-x-circle-fill text-danger"></i></td>
-                {% endif %}
-                <td>
-                    <form action="{% url 'procesar-prestamo' libro.id %}" method="get">
-                        <button type="submit" class="btn btn-success">Prestar</button>
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-      </table>
-      {% else %}
-      <div class="alert alert-warning" role="alert" style="text-align: center; width: 50%; margin: 0 auto;">
-          <h4 class="alert-heading">No hay libros para prestamos</h4>
-          <i class="bi bi-exclamation-circle" style="font-size: 30px;"></i>
-      </div>
-      {% endif %}
-
-
+      <h1 class="mb-4" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center; margin: 10px;">Documentos</h1>
+      
 </body>
 </html>

@@ -14,7 +14,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand logo" href="{%url "menu-principal" %}">
-                <i class="bi bi-book"></i> Biblioteca - Caldera
+                <i class="bi bi-book"></i> CESFAM - Caldera
             </a>
             <div class="div-imagenLogoCaldera">
                 <img  class="imagenLogoCaldera" src="{% static 'img/PngItem_5278850.png'%}">
@@ -38,53 +38,7 @@
         
       </ul>
 
-    <h1 class="mb-4" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center; margin: 10px;">Lista de Préstamos</h1>
+    <h1 class="mb-4" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center; margin: 10px;">Asignaciones</h1>
 
-    {%if prestamos %}
-    <table border="1" class="table table-striped table-hover" id="tablePrestamosConfirmados">
-        <thead class="table-dark">
-            <tr>
-                <th>Cliente</th>
-                <th>Libro</th>
-                <th>Categoría</th>
-                <th>Fecha de Préstamo</th>
-                <th>Fecha de Devolución</th>
-                <th>Estado</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for prestamo in prestamos %}
-            <tr>
-                <td>{{ prestamo.cliente.nombre }}</td>
-                <td>{{ prestamo.libro.titulo }}</td>
-                <td>{{ prestamo.categoria.nombre }}</td>
-                <td>{{ prestamo.fecha_prestamo }}</td>
-                <td>{{ prestamo.fecha_devolucion }}</td>
-                <td>{{ prestamo.estado|yesno:"Devuelto, Pendiente" }}</td>
-                <td>
-                    {% if not prestamo.estado %}
-                    <form action="{%url 'finalizar-prestamo' prestamo.id %}" method="post" class="d-inline">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalFinalizar{{ prestamo.id }}">Finalizar</button>
-                    </form>
-                    {% endif %}
-                    <form action="{%url 'eliminar-prestamo' prestamo.id %}" method="post" class="d-inline">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminar{{ prestamo.id }}">Eliminar</button>
-                    </form>
-                </td>
-            </tr>
-
-            
-        {% endfor %}
-        </tbody>
-    </table>
-    {% else %}
-    <div class="alert alert-warning" role="alert" style="text-align: center; width: 50%; margin: 0 auto;">
-        <h4 class="alert-heading">No hay prestamos confirmados</h4>
-        <i class="bi bi-exclamation-circle" style="font-size: 30px;"></i>
-    </div>
-    {% endif %}
 </body>
 </html>

@@ -13,7 +13,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand logo" href="{%url "menu-principal" %}">
-                <i class="bi bi-book"></i> Biblioteca - Caldera
+                <i class="bi bi-book"></i> CESFAM - Caldera
             </a>
             <div class="div-imagenLogoCaldera">
                 <img  class="imagenLogoCaldera" src="{% static 'img/PngItem_5278850.png'%}">
@@ -37,59 +37,8 @@
         
       </ul>
 
-    <h1 class="mb-4" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center; margin: 10px;">Libros registrados en sistema</h1>
+    <h1 class="mb-4" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center; margin: 10px;">Instituciones</h1>
 
-    {% if libros %}
-    <form class="mb-4" method="get" >
-        <div class="input-group" style="width: 45%; float: right; margin-bottom: 30px; margin-right: 10px;">
-            <a href="{%url "agregar-libro" %}" class="btn btn-primary mb-3" style="width: 50%; position:relative; left: 200px; top: 55px; border-radius: 10px;">Agregar libro</a>
-            <input type="text" class="form-control" name="buscar" placeholder="Buscar por título o ISBN" style="width: 90%; position: relative; right: 800px;">
-            <button type="submit" class="btn btn-primary" style="background-color: #4A148C; position:relative; right: 840px;"><i class="bi bi-search"></i></button>
-        </div>
-    </form>
-    <table class="table table-bordered table-striped">
-        <thead class="table-dark" >
-            <tr>
-                <th>ISBN</th>
-                <th>Título</th>
-                <th>Categoria</th>
-                <th>Autor</th>
-                <th>Editorial</th>
-                <th>Año publicación</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for libro in libros %}
-            <tr>
-                <td>{{ libro.isbn }}</td>
-                <td>{{ libro.titulo }}</td>
-                <td>
-                    {% for categoria in libro.categorias.all %}
-                        {{ categoria.nombre }}
-                    {% if not forloop.last %}, {% endif %}
-                    {% empty %}
-                        Sin categoria
-                    {% endfor %}
-
-                </td>
-                <td>{{ libro.autor }}</td>
-                <td>{{ libro.editorial }}</td>
-                <td>{{ libro.anio_publicacion }}</td>
-                <td>
-                    <a href="{%url 'editar-libro' libro.id %}" class="btn btn-warning">Editar</a>
-                    <a href="{%url 'eliminar-libro' libro.id %}" class="btn btn-danger">Eliminar</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-      </table>
-      {% else %}
-      <div class="alert alert-warning" role="alert" style="text-align: center; width: 50%; margin: 0 auto;">
-          <h4 class="alert-heading">No hay libros registrados en el sistema</h4>
-          <i class="bi bi-exclamation-circle" style="font-size: 30px;"></i>
-          <a href="{%url "agregar-libro" %}" class="btn btn-primary mb-3">Agregar libro</a>
-      </div>
-      {% endif %}
+    
 </body>
 </html>
