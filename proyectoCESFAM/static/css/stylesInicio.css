@@ -81,6 +81,12 @@ button{
     font-weight: 600;
     transition: all 0.4s ease;
 }
+.btn-registro {
+    display: flex;
+    flex-direction: column; /* Cambia a fila si quieres que estén en línea horizontal */
+    gap: 20px; /* Espaciado entre los botones */
+    margin-top: 20px; /* Espacio superior del contenedor */
+}
 
 button:hover{
     background-color: gray;

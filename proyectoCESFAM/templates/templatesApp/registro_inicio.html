@@ -40,8 +40,12 @@
                     </div>
                 {% endfor %}
                 {% endif %}
-                
-                <button type="submit" class="btn btn-light">Registrar</button>
+                <div class="btn-registro">
+                    <button type="submit" class="btn btn-light">Registrar</button>
+                    <a href="{% url 'buscar-usuario' %}" class="btn btn-light" style="text-align: center;">
+                        <i class="bi bi-box-arrow-left"></i> Regresar
+                    </a>
+                </div>
             </form>
         </section>
     </div>
