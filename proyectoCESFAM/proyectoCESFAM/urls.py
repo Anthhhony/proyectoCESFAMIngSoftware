@@ -17,24 +17,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from AppCESFAM.views import vista, lista_prestamos, procesar_prestamo, prestamos_confirmados, finalizar_prestamo, eliminar_prestamo, mostrar_libros, agregar_libro, editar_libro, eliminar_libro, register, buscar_usuario, mostrar_clientes, agregar_cliente, editar_cliente, eliminar_cliente
+from AppCESFAM.views import vista, lista_documentos, lista_asignaciones, lista_instituciones, register, buscar_usuario, lista_alertas
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', register, name='registrar-usuario'),
     path('', buscar_usuario, name='buscar-usuario'),
     path('menu/', vista, name='menu-principal'),
-    path('prestamo/', lista_prestamos, name='lista-prestamo'),
-    path('procesarPrestamo/<int:libro_id>', procesar_prestamo, name='procesar-prestamo'),
-    path('prestamosProcesados/', prestamos_confirmados, name='prestamos-confirmados'),
-    path('finalizarPrestamo/<int:prestamo_id>', finalizar_prestamo, name='finalizar-prestamo'),
-    path('eliminarPrestamo/<int:prestamo_id>', eliminar_prestamo, name='eliminar-prestamo'),
-    path('libros/', mostrar_libros, name='mostrar-libros'),
-    path('agregarLibro/', agregar_libro, name='agregar-libro'),
-    path('editarLibro/<int:pk>', editar_libro, name='editar-libro'),
-    path('eliminarLibro/<int:pk>', eliminar_libro, name='eliminar-libro'),
-    path('clientes/', mostrar_clientes, name='mostrar-clientes'),
-    path('agregarClientes/', agregar_cliente, name='agregar-cliente'),
-    path('editarCliente/<int:pk>', editar_cliente, name='editar-cliente'),
-    path('eliminarCliente/<int:pk>', eliminar_cliente, name='eliminar-cliente')
+    path('prestamo/', lista_documentos, name='lista-prestamo'),#
+    path('prestamosProcesados/', lista_asignaciones, name='prestamos-confirmados'),#
+    path('libros/', lista_instituciones, name='mostrar-libros'),#
+    path('clientes/', lista_alertas, name='mostrar-clientes'),#
 ]
