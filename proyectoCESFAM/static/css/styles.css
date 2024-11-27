@@ -33,14 +33,17 @@ li:hover{
     padding: 80px 20px;
     color: #fff;
     text-align: center;
+    
 }
 .banner h1 {
     
     font-size: 36px;
     font-weight: bold;
+    text-shadow: 1px, 1px, 5px, black;
 }
 .banner p {
     font-size: 18px;
+    text-shadow: 1px, 1px, 5px, black;
 }
 .services {
     padding: 40px 20px;
