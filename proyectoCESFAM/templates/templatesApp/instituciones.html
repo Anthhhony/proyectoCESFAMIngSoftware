@@ -12,7 +12,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand logo" href="{%url "menu-principal" %}">
+            <a class="navbar-brand logo" href="{%url 'menu-principal' %}">
                 <i class="bi bi-book"></i> CESFAM - Caldera
             </a>
             <div class="div-imagenLogoCaldera">
@@ -23,13 +23,13 @@
     </nav>
     <ul class="nav nav-pills nav-fill">
         <li class="nav-item">
-          <a class="nav-link" href="{%url "lista-prestamo" %}" style="color: black">Documentos</a>
+          <a class="nav-link" href="{%url 'lista-prestamo' %}" style="color: black">Documentos</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{%url "prestamos-confirmados" %}" style="color: black">Asignaciones</a>
+            <a class="nav-link" href="{%url 'prestamos-confirmados' %}" style="color: black">Asignaciones</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{%url "mostrar-libros" %}" style="color: black">Instituciones</a>
+            <a class="nav-link" href="{%url 'mostrar-libros' %}" style="color: black">Instituciones</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{%url 'mostrar-clientes' %}" style="color: black">Alertas</a>
