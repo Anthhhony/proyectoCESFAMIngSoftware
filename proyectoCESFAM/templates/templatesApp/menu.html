@@ -23,6 +23,9 @@
             
         </div>
     </nav>
+
+    <!-- SECCIONES -->
+
     <ul class="nav nav-pills nav-fill">
         <li class="nav-item">
           <a class="nav-link" href="{%url "lista-prestamo" %}" style="color: black">Documentos</a>
@@ -34,10 +37,11 @@
             <a class="nav-link" href="{%url "mostrar-libros" %}" style="color: black">Instituciones</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" style="color: black">Alertas</a>
+            <a class="nav-link" href="{%url 'mostrar-clientes' %}" style="color: black">Alertas</a>
         </li>
         
       </ul>
+      
     <!-- Banner -->
     <div class="banner">
         <h1 style="color: #ffffff; font-size: 40px; text-shadow: 1px 1px 9px black;">NUEVA WEB CESFAM</h1>
@@ -67,8 +71,11 @@
                 </a>
             </div>
             <div class="col-md-3 service" style="cursor: pointer;">
-                <i class="bi bi-bookmark"></i>
+                <a href="{%url 'mostrar-clientes' %}">
+                    <i class="bi bi-exclamation-circle"></i>
                 <h5>Alertas</h5>
+                </a>
+                
             </div>
         </div>
     </div>
