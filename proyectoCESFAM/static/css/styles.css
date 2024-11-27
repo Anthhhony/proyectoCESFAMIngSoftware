@@ -15,8 +15,10 @@ li:hover{
 }
 
 .imagenLogoCaldera{
-    height: 50px;
-
+    height: 60px;
+    box-shadow: 0 0 8px #ff0000;
+    padding: 5px;
+    border-radius: 8px;
 }
 
 .header {
