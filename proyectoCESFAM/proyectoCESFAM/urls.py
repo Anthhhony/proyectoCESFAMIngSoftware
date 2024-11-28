@@ -24,8 +24,8 @@ urlpatterns = [
     path('register/', register, name='registrar-usuario'),
     path('', buscar_usuario, name='buscar-usuario'),
     path('menu/', vista, name='menu-principal'),
-    path('prestamo/', lista_documentos, name='lista-prestamo'),#
-    path('prestamosProcesados/', lista_asignaciones, name='prestamos-confirmados'),#
-    path('libros/', lista_instituciones, name='mostrar-libros'),#
-    path('clientes/', lista_alertas, name='mostrar-clientes'),#
+    path('prestamo/', lista_documentos, name='lista-documentos'),#
+    path('prestamosProcesados/', lista_asignaciones, name='lista-asignaciones'),#
+    path('libros/', lista_instituciones, name='lista-instituciones'),#
+    path('clientes/', lista_alertas, name='lista-alertas'),#
 ]

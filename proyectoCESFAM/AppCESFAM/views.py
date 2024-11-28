@@ -1,7 +1,6 @@
 from datetime import date
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
-from AppCESFAM.models import Cliente, Libro, models, Prestamo, Categoria, Usuario
-from AppCESFAM.forms import ClienteForm, LibroForm
+from AppCESFAM.models import Usuario
 from . import forms
 from django.contrib import messages
 from django.urls import reverse

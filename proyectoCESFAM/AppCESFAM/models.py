@@ -61,3 +61,80 @@ class Prestamo(models.Model):
     def __str__(self):
         return f"Prestamo - {self.cliente.nombre}"
     
+"""# Modelo Institución
+class Institucion(models.Model):
+    nombre = models.CharField(max_length=255)
+    rut = models.CharField(max_length=20, unique=True)
+    tipo = models.CharField(max_length=100)
+    direccion = models.TextField()
+    contacto = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.nombre
+
+# Modelo Documento
+class Documento(models.Model):
+    institucion = models.ForeignKey(Institucion, on_delete=models.CASCADE)
+    tipo_documento = models.CharField(max_length=100)
+    motivo_documento = models.TextField()
+    fecha_ingreso = models.DateField()
+    fecha_documento = models.DateField()
+    valor_monetario = models.DecimalField(max_digits=10, decimal_places=2)
+    observacion = models.TextField(blank=True, null=True)
+    archivo_adjunto = models.FileField(upload_to='documentos/', blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.tipo_documento} - {self.motivo_documento}"
+
+# Modelo Historial Documento
+class HistorialDocumento(models.Model):
+    documento = models.ForeignKey(Documento, on_delete=models.CASCADE)
+    institucion = models.ForeignKey(Institucion, on_delete=models.CASCADE)
+    fecha_modificacion = models.DateTimeField(auto_now_add=True)
+    accion = models.TextField()
+
+    def __str__(self):
+        return f"Historial de {self.documento}"
+
+# Modelo Periodo
+class Periodo(models.Model):
+    documento = models.ForeignKey(Documento, on_delete=models.CASCADE)
+    institucion = models.ForeignKey(Institucion, on_delete=models.CASCADE)
+    anio = models.PositiveIntegerField()
+    mes = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f"{self.anio}-{self.mes}"
+
+# Modelo Asignación
+class Asignacion(models.Model):
+    documento = models.ForeignKey(Documento, on_delete=models.CASCADE)
+    institucion = models.ForeignKey(Institucion, on_delete=models.CASCADE)
+    fecha_asignacion = models.DateTimeField(auto_now_add=True)
+    estado = models.CharField(max_length=50, choices=(
+        ('Pendiente', 'Pendiente'),
+        ('Completado', 'Completado'),
+    ))
+    nota = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return f"Asignación {self.estado} para {self.documento}"
+
+# Modelo Usuario
+class Usuario(models.Model):
+    institucion = models.ForeignKey(Institucion, on_delete=models.CASCADE)
+    asignacion = models.ForeignKey(Asignacion, on_delete=models.CASCADE)
+    nombre = models.CharField(max_length=255)
+    rut = models.CharField(
+        max_length=12,
+        unique=True,
+        validators=[RegexValidator(regex=r'^\d{1,8}-{0,9Kk}$', message='Rut incorrecto. Ejemplo: 12345678-9')]
+    )
+    contrasena = models.CharField(max_length=100)
+    rol = models.CharField(max_length=100)
+    correo = models.EmailField(unique=True)
+    telefono = models.CharField(max_length=15)
+
+    def __str__(self):
+        return self.nombre"""
+    
