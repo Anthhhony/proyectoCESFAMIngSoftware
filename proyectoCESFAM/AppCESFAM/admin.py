@@ -1,5 +1,5 @@
 from django.contrib import admin
-from AppCESFAM.models import Libro, Categoria, Cliente, Prestamo, Usuario
+from AppCESFAM.models import Libro, Categoria, Cliente, Prestamo, Usuario, Documento
 
 # Register your models here.
 @admin.register(Libro)
@@ -27,3 +27,16 @@ class UsuarioAdmin(admin.ModelAdmin):
 class PrestamoAdmin(admin.ModelAdmin):
     list_display = ('fecha_prestamo', 'fecha_devolucion', 'estado', 'cliente', 'libro', 'categoria', 'usuario')
     search_fields = ('cliente', 'fecha_prestamo', 'usuario')
+
+class docAdmin(admin.ModelAdmin):
+    list_display = (
+        'tipo_documento',
+        'motivo_documento',
+        'fecha_ingreso',
+        'fecha_documento',
+        'valor_monetario',
+        'observacion',
+        'archivo_adjunto',
+        'institucion_id',
+    )
+admin.site.register(Documento,docAdmin)

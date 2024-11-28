@@ -60,4 +60,30 @@ class Prestamo(models.Model):
     
     def __str__(self):
         return f"Prestamo - {self.cliente.nombre}"
-    
+
+
+# Modelo Institución
+class Institucion(models.Model):
+    nombre = models.CharField(max_length=255)
+    rut = models.CharField(max_length=20, unique=True)
+    tipo = models.CharField(max_length=100)
+    direccion = models.TextField()
+    contacto = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.nombre
+
+# Modelo Documento
+class Documento(models.Model):
+    institucion = models.ForeignKey(Institucion, on_delete=models.CASCADE)
+    tipo_documento = models.CharField(max_length=100)
+    motivo_documento = models.TextField()
+    fecha_ingreso = models.DateField()
+    fecha_documento = models.DateField()
+    valor_monetario = models.DecimalField(max_digits=10, decimal_places=2)
+    observacion = models.TextField(blank=True, null=True)
+    archivo_adjunto = models.FileField(upload_to='documentos/', blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.tipo_documento} - {self.motivo_documento}"
+

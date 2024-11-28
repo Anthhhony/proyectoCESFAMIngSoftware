@@ -1,7 +1,7 @@
 from datetime import date
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
-from AppCESFAM.models import Cliente, Libro, models, Prestamo, Categoria, Usuario
-from AppCESFAM.forms import ClienteForm, LibroForm
+from AppCESFAM.models import Cliente, Libro, models, Prestamo, Categoria, Usuario,Documento
+from AppCESFAM.forms import ClienteForm, LibroForm,FormularioDoc 
 from . import forms
 from django.contrib import messages
 from django.urls import reverse
@@ -55,10 +55,23 @@ def register(request):
 
     return render(request, 'templatesApp/registro_inicio.html')
 
+def agregarDoc(request):
+    
+    if request.method == 'POST':
+        form = forms.FormularioDoc(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return lista_documentos(request)
+        else:
+            form = FormularioDoc()
+            
+    data = {'form': form}
+    return render(request, 'templatesApp/documentos.html', data)
 
 def lista_documentos(request):
-
-    return render(request, 'templatesApp/documentos.html')
+    documentos = Documento.objects.all()
+    data = {'documentos': documentos}
+    return render(request, 'templatesApp/documentos.html',data)
 
 
 def lista_asignaciones(request):

@@ -1,5 +1,5 @@
 from django import forms
-from AppCESFAM.models import Usuario, Libro, Cliente
+from AppCESFAM.models import Usuario, Libro, Cliente,Documento
 
 class formularioLogin(forms.Form):
     rut = forms.CharField(max_length=12)
@@ -21,3 +21,9 @@ class ClienteForm(forms.ModelForm):
     class Meta:
         model = Cliente
         fields = ['nombre', 'direccion', 'telefono', 'correo', 'usuario']
+
+
+class FormularioDoc(forms.ModelForm):
+    class Meta:
+        model = Documento
+        fields = '__all__'
