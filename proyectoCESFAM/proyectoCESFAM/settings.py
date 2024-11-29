@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-f6*)+opz2v_f1*bri#$*^hz2#vx72-#y2jpx+un^8xd^#4)$fk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['db-cesfam-instance.c5eoo4euss03.us-east-2.rds.amazonaws.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -81,8 +81,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'db_cesfam',
-        'USER': 'root',
-        'PASSWORD': '',
+        'USER': 'cesfamAdmin',
+        'PASSWORD': 'cesfam123',
+        'HOST': 'db-cesfam-instance.c5eoo4euss03.us-east-2.rds.amazonaws.com',
+        'PORT': '3306',
+        'OPTIONS':{
+            'connect_timeout':20,
+        }
         
     }
 }

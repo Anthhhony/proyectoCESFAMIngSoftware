@@ -21,8 +21,8 @@
             
         </div>
     </nav>
-    <!-- SECCIONES -->
 
+    <!-- SECCIONES -->
     <ul class="nav nav-pills nav-fill">
         <li class="nav-item">
           <a class="nav-link" href="{%url 'lista-documentos' %}" >Documentos</a>
@@ -39,8 +39,18 @@
         
       </ul>
 
-      <form class="mb-4" method="get">
-      <h1 class="mb-4" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center; margin: 10px;">Documentos</h1>
-      
+    <h1 class="mb-4" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center; margin: 10px;">Documentos</h1>
+    <div class="container">
+        <div class="alert alert-info text-center">Agregar Documento</div>
+            <form method="post">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <input type="submit" value="Agregar" class="btn btn-info">
+            </form>
+            <div class="back-btn-container">
+                <a href="{%url 'menu-principal' %}" class="btn btn-info">ATRAS</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -17,15 +17,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from AppCESFAM.views import vista, lista_documentos, lista_asignaciones, lista_instituciones, register, buscar_usuario, lista_alertas
+from AppCESFAM.views import vista, lista_documentos, lista_asignaciones, lista_instituciones, register, buscar_usuario, lista_alertas, agregarDoc,agregarInstitucion
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', register, name='registrar-usuario'),
     path('', buscar_usuario, name='buscar-usuario'),
     path('menu/', vista, name='menu-principal'),
-    path('prestamo/', lista_documentos, name='lista-documentos'),#
-    path('prestamosProcesados/', lista_asignaciones, name='lista-asignaciones'),#
-    path('libros/', lista_instituciones, name='lista-instituciones'),#
-    path('clientes/', lista_alertas, name='lista-alertas'),#
+    path('Documentos/', lista_documentos , name='lista-documentos'),
+    path('agregarDocumento/', agregarDoc , name='agregar-documentos'),#
+    path('asignaciones/', lista_asignaciones, name='lista-asignaciones'),#
+    path('Instituciones/', lista_instituciones , name='lista-instituciones'),
+    path('agregarInstitucion/', agregarInstitucion, name='agregar-institucion'),#
+    path('alertas/', lista_alertas, name='lista-alertas'),#
 ]
