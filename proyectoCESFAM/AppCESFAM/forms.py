@@ -1,5 +1,5 @@
 from django import forms
-from AppCESFAM.models import Usuario, Libro, Cliente,Documento
+from AppCESFAM.models import Usuario, Libro, Cliente,Documento, Institucion
 
 class formularioLogin(forms.Form):
     rut = forms.CharField(max_length=12)
@@ -26,4 +26,12 @@ class ClienteForm(forms.ModelForm):
 class FormularioDoc(forms.ModelForm):
     class Meta:
         model = Documento
+        fields = '__all__'
+        widgets = {
+        "fecha_ingreso":forms.DateInput(attrs={'type':'date'}),
+        "fecha_documento": forms.DateInput(attrs={'type':'date'})
+        }
+class FormularioInstitucion(forms.ModelForm):
+    class Meta:
+        model = Institucion
         fields = '__all__'

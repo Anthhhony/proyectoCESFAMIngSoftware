@@ -1,7 +1,7 @@
 from django.db import models
 from django.core import validators
 from django.core.validators import RegexValidator, EmailValidator, MaxLengthValidator, MinLengthValidator, MaxValueValidator, MinValueValidator
-
+from django.utils import timezone
 # Create your models here.
 class Usuario(models.Model):
     rut = models.CharField(
@@ -67,7 +67,7 @@ class Institucion(models.Model):
     nombre = models.CharField(max_length=255)
     rut = models.CharField(max_length=20, unique=True)
     tipo = models.CharField(max_length=100)
-    direccion = models.TextField()
+    direccion = models.CharField(max_length=100)
     contacto = models.CharField(max_length=100)
 
     def __str__(self):
@@ -78,8 +78,8 @@ class Documento(models.Model):
     institucion = models.ForeignKey(Institucion, on_delete=models.CASCADE)
     tipo_documento = models.CharField(max_length=100)
     motivo_documento = models.TextField()
-    fecha_ingreso = models.DateField()
-    fecha_documento = models.DateField()
+    fecha_ingreso = models.DateTimeField(default=timezone.now)
+    fecha_documento = models.DateTimeField(default=timezone.now)
     valor_monetario = models.DecimalField(max_digits=10, decimal_places=2)
     observacion = models.TextField(blank=True, null=True)
     archivo_adjunto = models.FileField(upload_to='documentos/', blank=True, null=True)

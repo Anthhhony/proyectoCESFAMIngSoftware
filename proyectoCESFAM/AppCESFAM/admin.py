@@ -1,5 +1,5 @@
 from django.contrib import admin
-from AppCESFAM.models import Libro, Categoria, Cliente, Prestamo, Usuario, Documento
+from AppCESFAM.models import Libro, Categoria, Cliente, Prestamo, Usuario, Documento,Institucion
 
 # Register your models here.
 @admin.register(Libro)
@@ -39,4 +39,12 @@ class docAdmin(admin.ModelAdmin):
         'archivo_adjunto',
         'institucion_id',
     )
+
+
+@admin.register(Institucion)
+class institucionAdmin(admin.ModelAdmin):
+    list_display = ('nombre', 'rut', 'tipo', 'direccion','contacto')
+    search_fields = ('nombre', 'rut')
+
+
 admin.site.register(Documento,docAdmin)
