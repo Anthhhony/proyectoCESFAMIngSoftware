@@ -27,7 +27,7 @@ class UsuarioAdmin(admin.ModelAdmin):
 
 @admin.register(Documento)
 class DocumentoAdmin(admin.ModelAdmin):
-    list_display = ('id_documento', 'id_tipodoc', 'id_institucion', 'motivo', 'fecha_ingreso', 'valor_monetario')
+    list_display = ('id_documento', 'id_tipodoc', 'id_institucion', 'motivo', 'fecha_ingreso', 'fecha_documento', 'valor_monetario')
     search_fields = ('id_documento', 'motivo')  # Habilitar búsqueda
     list_filter = ('fecha_ingreso', 'id_tipodoc')  # Filtros por fecha y tipo de documento
     ordering = ('fecha_ingreso',)  # Ordenar por fecha de ingreso

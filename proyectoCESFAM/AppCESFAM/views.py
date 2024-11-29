@@ -81,9 +81,32 @@ def agregarDoc(request):
         if form.is_valid():
             form.save()
             return lista_documentos(request)
-    data = {'form': form}
-    return render(request, 'templatesApp/documentos.html', data)
+    documento = {'form': form}
+    return render(request, 'templatesApp/formularios.html', documento)
 
+def editarDoc(request, pk):
+    documento = get_object_or_404(Documento, pk=id)
+    titulo = 'Editar'
+    if request.method == 'POST':
+        form = FormularioDoc(request.POST, instance=documento)
+        if form.is_valid():
+            form.save()
+            return redirect(lista_documentos)
+        else:
+            form = FormularioDoc(instance=documento)
+    return render(request, 'templatesApp/formularios.html',{
+                    'form':form,
+                    'documento':documento,
+                    'titulo':titulo,
+                   })
+
+def eliminarDoc(request, pk):
+    documento = get_object_or_404(Documento, pk=id)
+    if request.method == 'POST':
+        documento.delete()
+        return redirect(lista_documentos)
+    return render(request, 'templatesApp/eliminar_confirmacion.html', {'documento': documento})
+        
 def agregarInstitucion(request):
     form = FormularioInstitucion()
     if request.method == 'POST':
@@ -91,13 +114,13 @@ def agregarInstitucion(request):
         if form.is_valid():
             form.save()
             return lista_instituciones(request)
-    data = {'form':form}
-    return render(request,'templatesApp/instituciones.html', data)
+    institucion = {'form':form}
+    return render(request,'templatesApp/formularios.html', institucion)
 
 def lista_documentos(request):
     documentos = Documento.objects.all()
     data = {'documentos': documentos}
-    return render(request, 'templatesApp/documentos.html',data)
+    return render(request, 'templatesApp/documentos.html', data)
 
 
 def lista_asignaciones(request):
