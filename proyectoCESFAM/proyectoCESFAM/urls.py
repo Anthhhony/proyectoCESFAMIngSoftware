@@ -29,5 +29,5 @@ urlpatterns = [
     path('asignaciones/', lista_asignaciones, name='lista-asignaciones'),#
     path('Instituciones/', lista_instituciones , name='lista-instituciones'),
     path('agregarInstitucion/', agregarInstitucion, name='agregar-institucion'),#
-    path('alertas/', lista_alertas, name='alertas'),#
+    path('alertas/', lista_alertas, name='lista-alertas'),#
 ]
