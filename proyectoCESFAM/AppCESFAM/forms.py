@@ -54,6 +54,21 @@ class FormularioDoc(forms.ModelForm):
                 }
             )
         }
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['id_tipodoc'].label = "Tipo de documento"
+        self.fields['id_institucion'].label = "Institución"
+        
+        self.fields['id_tipodoc'].empty_label = None
+        self.fields['id_tipodoc'].choices = [('', '--- Seleccione una opción ---')] + list(
+            self.fields['id_tipodoc'].choices
+        ) + [('agregar', 'Agregar tipo de documento')]
+        
+        self.fields['id_institucion'].empty_label = None
+        self.fields['id_institucion'].choices = [('', '--- Seleccione una opción ---')] + list(
+            self.fields['id_institucion'].choices
+        ) + [('agregar', 'Agregar Institución')]
+        
         
 class FormularioInstitucion(forms.ModelForm):
     class Meta:

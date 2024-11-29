@@ -74,15 +74,57 @@ def register(request):
 
     return render(request, 'templatesApp/registro_inicio.html')
 
-def agregarDoc(request):
-    form = FormularioDoc()
+def formulario_generico(request, form_class, titulo, redirigir_url, opciones_redirigir=None):
+    form = form_class()
     if request.method == 'POST':
-        form = forms.FormularioDoc(request.POST)
+        form = form_class(request.POST)
         if form.is_valid():
+            if opciones_redirigir:
+                for field, opciones in opciones_redirigir.items():
+                    valor_seleccionado = form.cleaned_data.get(field)
+                    if valor_seleccionado in opciones:
+                        return redirect(opciones[valor_seleccionado])
             form.save()
-            return lista_documentos(request)
-    documento = {'form': form}
-    return render(request, 'templatesApp/formularios.html', documento)
+            if 'guardar_agregar_otro' in request.POST:
+                return redirect(request.path)
+            return redirect(redirigir_url)
+    return render(request, 'templatesApp/formularios.html', {
+        'form':form,
+        'titulo':titulo,
+        'redirigir_url': redirigir_url
+    })
+
+def agregarDoc(request):
+    return formulario_generico(
+        request,
+        forms.FormularioDoc,
+        "Agregar Documento",
+        'lista-documentos',
+        opciones_redirigir={
+            'id_tipodoc':{
+                'agregar': 'agregar-tipo-documento'
+            },
+            'id_institucion':{
+                'agregar': 'agregar-institucion'
+            }
+        }
+    )
+
+def agregarInstitucion(request):
+    return formulario_generico(
+        request,
+        forms.FormularioInstitucion,
+        "Agregar Institución",
+        'lista-instituciones'
+    )
+
+def agregarTipoDoc(request):
+    return formulario_generico(
+        request,
+        forms.FormularioTipoDoc,
+        "Agregar Tipo de Documento",
+        'agregar-documentos'
+    )
 
 def editarDoc(request, pk):
     documento = get_object_or_404(Documento, pk=id)
@@ -107,15 +149,7 @@ def eliminarDoc(request, pk):
         return redirect(lista_documentos)
     return render(request, 'templatesApp/eliminar_confirmacion.html', {'documento': documento})
         
-def agregarInstitucion(request):
-    form = FormularioInstitucion()
-    if request.method == 'POST':
-        form = forms.FormularioInstitucion(request.POST)
-        if form.is_valid():
-            form.save()
-            return lista_instituciones(request)
-    institucion = {'form':form}
-    return render(request,'templatesApp/formularios.html', institucion)
+
 
 def lista_documentos(request):
     documentos = Documento.objects.all()
@@ -130,8 +164,9 @@ def lista_asignaciones(request):
 
     
 def lista_instituciones(request):
-
-    return render(request, 'templatesApp/instituciones.html')
+    instituciones = Institucion.objects.all()
+    data = {'instituciones': instituciones}
+    return render(request,'templatesApp/instituciones.html', data)
 
 
 def lista_alertas(request):

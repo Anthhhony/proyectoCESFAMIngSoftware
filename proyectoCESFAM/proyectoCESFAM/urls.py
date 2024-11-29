@@ -17,19 +17,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from AppCESFAM.views import vista, lista_documentos, lista_asignaciones, lista_instituciones, register, buscar_usuario, lista_alertas, agregarDoc,agregarInstitucion, editarDoc, eliminarDoc
+from AppCESFAM.views import vista, lista_documentos, lista_asignaciones, lista_instituciones, register, buscar_usuario, lista_alertas, agregarDoc,agregarInstitucion, editarDoc, eliminarDoc, agregarTipoDoc
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('register/', register, name='registrar-usuario'),
+    path('Register/', register, name='registrar-usuario'),
     path('', buscar_usuario, name='buscar-usuario'),
-    path('menu/', vista, name='menu-principal'),
+    path('Menu/', vista, name='menu-principal'),
     path('Documentos/', lista_documentos , name='lista-documentos'),
-    path('agregarDocumento/', agregarDoc , name='agregar-documentos'),#
-    path('editarDocumento/<int:pk>', editarDoc, name='editar-documento'),
-    path('eliminarDocumento/<int:pk>', eliminarDoc, name='eliminar-documento'),
-    path('asignaciones/', lista_asignaciones, name='lista-asignaciones'),#
+    path('AgregarDocumento/', agregarDoc , name='agregar-documentos'),#
+    path('EditarDocumento/<int:pk>', editarDoc, name='editar-documento'),
+    path('EliminarDocumento/<int:pk>', eliminarDoc, name='eliminar-documento'),
+    path('Asignaciones/', lista_asignaciones, name='lista-asignaciones'),#
     path('Instituciones/', lista_instituciones , name='lista-instituciones'),
-    path('agregarInstitucion/', agregarInstitucion, name='agregar-institucion'),#
-    path('alertas/', lista_alertas, name='lista-alertas'),#
+    path('AgregarInstitucion/', agregarInstitucion, name='agregar-institucion'),#
+    path('Alertas/', lista_alertas, name='lista-alertas'),#
+    path('AgregarTipoDoc/', agregarTipoDoc, name='agregar-tipodoc'),#
+    path('Alertas/', lista_alertas, name='lista-alertas'),#
+    
 ]
