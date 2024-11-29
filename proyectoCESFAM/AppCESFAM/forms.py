@@ -56,46 +56,47 @@ class FormularioDoc(forms.ModelForm):
         }
         
 class FormularioInstitucion(forms.ModelForm):
-    model = Institucion
-    fields = "__all__"
-    widgets = {
-            'nombre': forms.TextInput(
-                attrs={
-                    'class': 'form-control',
-                    'placeholder': 'Nombre de la institución',
-                    'maxlength': 255,
-                }
-            ),
-            'rut': forms.TextInput(
-                attrs={
-                    'class': 'form-control',
-                    'placeholder': 'Formato: 12.345.678-9',
-                    'maxlength': 12,
-                }
-            ),
-            'tipo': forms.TextInput(
-                attrs={
-                    'class': 'form-control',
-                    'placeholder': 'Tipo de institución',
-                    'maxlength': 50,
-                }
-            ),
-            'direccion': forms.Textarea(
-                attrs={
-                    'class': 'form-control',
-                    'placeholder': 'Dirección de la institución',
-                    'rows': 3,
-                }
-            ),
-            'contacto': forms.TextInput(
-                attrs={
-                    'class': 'form-control',
-                    'placeholder': 'Número de contacto (+56912345678)',
-                    'maxlength': 20,
-                }
-            )
-        }
-    
+    class Meta:
+        model = Institucion
+        fields = "__all__"
+        widgets = {
+                'nombre': forms.TextInput(
+                    attrs={
+                        'class': 'form-control',
+                        'placeholder': 'Nombre de la institución',
+                        'maxlength': 255,
+                    }
+                ),
+                'rut': forms.TextInput(
+                    attrs={
+                        'class': 'form-control',
+                        'placeholder': 'Formato: 12.345.678-9',
+                        'maxlength': 12,
+                    }
+                ),
+                'tipo': forms.TextInput(
+                    attrs={
+                        'class': 'form-control',
+                        'placeholder': 'Tipo de institución',
+                        'maxlength': 50,
+                    }
+                ),
+                'direccion': forms.Textarea(
+                    attrs={
+                        'class': 'form-control',
+                        'placeholder': 'Dirección de la institución',
+                        'rows': 3,
+                    }
+                ),
+                'contacto': forms.TextInput(
+                    attrs={
+                        'class': 'form-control',
+                        'placeholder': 'Número de contacto (+56912345678)',
+                        'maxlength': 20,
+                    }
+                )
+            }
+        
 class FormularioTipoDoc(forms.ModelForm):
     class Meta:
         model = TipoDocumento
