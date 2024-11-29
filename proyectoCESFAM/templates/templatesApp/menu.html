@@ -28,16 +28,16 @@
 
     <ul class="nav nav-pills nav-fill">
         <li class="nav-item">
-          <a class="nav-link" href="{%url 'lista-documentos' %}" style="color: black">Documentos</a>
+          <a class="nav-link" href="{%url 'lista-documentos' %}" >Documentos</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{%url 'lista-asignaciones' %}" style="color: black">Asignaciones</a>
+            <a class="nav-link" href="{%url 'lista-asignaciones' %}" >Asignaciones</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{%url 'lista-instituciones' %}" style="color: black">Instituciones</a>
+            <a class="nav-link" href="{%url 'lista-instituciones' %}" >Instituciones</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{%url 'lista-alertas' %}" style="color: black">Alertas</a>
+            <a class="nav-link" href="{%url 'lista-alertas' %}" >Alertas</a>
         </li>
         
       </ul>
@@ -48,45 +48,87 @@
         <p style="color: #ffffff; font-size: 24px; text-shadow: 2px 2px 5px black;">Bienvenido este es el nuevo sistema web del registro de documentos CESFAM de Caldera, esta es la primera version, por lo que se mejorara con el tiempo</p>
     </div>
     
-
+    
     <!-- Sección de servicios -->
     <div class="services container">
         <div class="row" style="margin-left: 15%;" >
             <a href="{%url 'lista-documentos' %}">
                 <div class="col-md-3 service" style="cursor: pointer;">
                     <i class="bi bi-file"></i>
-                    <h5>Documentos</h5>
             </a>
+            <h5 style="color: #255dc5;">Documentos</h5>
             </div>
             <div class="col-md-3 service" style="cursor: pointer;">
                 <a href="{%url 'lista-asignaciones' %}">
                     <i class="bi bi-files"></i>
-                    <h5>Asignaciones</h5>
                 </a>
+                <h5 style="color: #255dc5;">Asignaciones</h5>
             </div>
             <div class="col-md-3 service" style="cursor: pointer;">
                 <a href="{%url 'lista-instituciones' %}">
                     <i class="bi bi-book-half"></i>
-                    <h5>Instituciones</h5>
                 </a>
+                <h5 style="color: #255dc5;">Instituciones</h5>
             </div>
             <div class="col-md-3 service" style="cursor: pointer;">
                 <a href="{%url 'lista-alertas' %}">
-                    <i class="bi bi-exclamation-circle"></i>
-                <h5>Alertas</h5>
+                    <i class="bi bi-exclamation-circle"></i>              
                 </a>
-                
+                <h5 style="color: #255dc5;">Alertas</h5>
             </div>
             <div class="col-md-3 service" style="cursor: pointer;">
                 <a href="{%url 'buscar-usuario' %}">
                     <i class="bi bi-box-arrow-right"></i>
-                <h5>Cerrar Sesion</h5>
                 </a>
-                
+                <h5 style="color: #255dc5;">Cerrar Sesion</h5>
             </div>
         </div>
     </div>
 
+    <br>
+
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5>¿Qué ofrecemos?</h5>
+                    <ul class="list-unstyled">
+                        <li>Organizacion</li>
+                        <li>Formacion</li>
+                        <li>Optimizacion</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Maestros Involucrados</h5>
+                    <ul class="list-unstyled">
+                        <li>Anthony Maldonado</li>
+                        <li>Rodrigo Vera</li>
+                        <li>Alejandro Gonzalez</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>¡Contactanos!</h5>
+                    <ul class="list-unstyled d-flex gap-3">
+                        <li><i class="bi bi-envelope"></i></li>
+                        <li><i class="bi bi-instagram"></i></li>
+                        <li><i class="bi bi-linkedin"></i></li>
+                        <li><i class="bi bi-twitter"></i></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Otros</h5>
+                    <ul class="list-unstyled">
+                        <li>Ayuda</li>
+                        <li>Manual del sistema</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center">© 2024 Anthony Maldonado, Rodrigo Vera y Alejandro Gonzalez - Todos los derechos reservados</p>
+        </div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
 </body>
 </html>
