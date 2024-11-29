@@ -1,10 +1,11 @@
 from datetime import date
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
-from AppCESFAM.models import Usuario
+from AppCESFAM.models import Usuario, Documento, Asignacion, TipoDocumento, Institucion
 from . import forms
 from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth.hashers import make_password, check_password
+from AppCESFAM.forms import FormularioAsignacion, FormularioDoc, FormularioInstitucion, FormularioRegister, FormularioTipoDoc, formularioLogin
 
 # Create your views here.
 
@@ -54,10 +55,30 @@ def register(request):
 
     return render(request, 'templatesApp/registro_inicio.html')
 
+def agregarDoc(request):
+    form = FormularioDoc()
+    if request.method == 'POST':
+        form = forms.FormularioDoc(request.POST)
+        if form.is_valid():
+            form.save()
+            return lista_documentos(request)
+    data = {'form': form}
+    return render(request, 'templatesApp/documentos.html', data)
+
+def agregarInstitucion(request):
+    form = FormularioInstitucion()
+    if request.method == 'POST':
+        form = forms.FormularioInstitucion(request.POST)
+        if form.is_valid():
+            form.save()
+            return lista_instituciones(request)
+    data = {'form':form}
+    return render(request,'templatesApp/instituciones.html', data)
 
 def lista_documentos(request):
-
-    return render(request, 'templatesApp/documentos.html')
+    documentos = Documento.objects.all()
+    data = {'documentos': documentos}
+    return render(request, 'templatesApp/documentos.html',data)
 
 
 def lista_asignaciones(request):
