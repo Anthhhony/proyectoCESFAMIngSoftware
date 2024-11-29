@@ -41,11 +41,27 @@
 
     <h1 class="mb-4" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center; margin: 10px;">Documentos</h1>
     {% if documentos %}
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <!-- Barra de búsqueda -->
+            <div class="input-group w-50">
+                <input type="text" class="form-control" placeholder="Buscar documentos..." aria-label="Buscar documentos" id="search-input">
+                <button class="btn btn-outline-secondary" type="button" id="search-button">
+                    <i class="bi bi-search"></i> <!-- Ícono de búsqueda -->
+                </button>
+            </div>
+            
+            <!-- Botón de agregar documento -->
+            <a href="{% url 'agregar-documentos' %}" class="btn btn-success">
+                <i class="bi bi-plus-circle"></i> Agregar Documento
+            </a>
+        </div>
+    </div>
+    <br/>
     <table class="table table-bordered table-striped">
         <thead class="table-dark" >
             <tr>
                 <th>ID Documento</th>
-                <th>ID Tipo documento</th>
                 <th>Tipo documento</th>
                 <th>Institución</th>
                 <th>Motivo</th>
@@ -60,30 +76,15 @@
             <tr>
                 <td>{{ documento.id_documento }}</td>
                 <td>{{ documento.id_tipodoc }}</td>
-                <td>
-                    {% for td in d.tipodoc.all %}
-                        {{ td.nombre }}
-                    {% if not forloop.last %}, {% endif %}
-                    {% empty %}
-                        No hay tipo de documentos
-                    {% endfor %}
-                </td>
-                <td>
-                    {% for inst in d.institucion.all %}
-                        {{ institucion.nombre }}
-                    {% if not forloop.last %}, {% endif %}
-                    {% empty %}
-                        No hay institución
-                    {% endfor %}
-                </td>
+                <td>{{ documento.id_institucion.nombre }}</td>
                 <td>{{ documento.motivo }}</td>
                 <td>{{ documento.fecha_ingreso }}</td>
                 <td>{{ documento.fecha_documento }}</td>
-                <td>{{ documento.valor_monetario }}</td>
+                <td>$ {{ documento.valor_monetario }}</td>
                 <td>
-                    {% if documento.id %}
-                    <a href="{% url 'editar-documento' documento.id %}" class="btn btn-warning">Editar</a>
-                    <a href="{% url 'eliminar-documento' documento.id %}" class="btn btn-danger">Eliminar</a>
+                    {% if documento.id_documento %}
+                    <a href="{% url 'editar-documento' documento.id_documento %}" class="btn btn-warning">Editar</a>
+                    <a href="{% url 'eliminar-documento' documento.id_documento %}" class="btn btn-danger">Eliminar</a>
                     {% else %}
                     <span>ID NO DISPONIBLE</span>
                     {% endif %}
@@ -101,4 +102,43 @@
       </div>
       {% endif %}
 </body>
+<footer class="bg-dark text-light py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h5>¿Qué ofrecemos?</h5>
+                <ul class="list-unstyled">
+                    <li>Organizacion</li>
+                    <li>Formacion</li>
+                    <li>Optimizacion</li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5>Maestros Involucrados</h5>
+                <ul class="list-unstyled">
+                    <li>Anthony Maldonado</li>
+                    <li>Rodrigo Vera</li>
+                    <li>Alejandro Gonzalez</li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5>¡Contactanos!</h5>
+                <ul class="list-unstyled d-flex gap-3">
+                    <li id="iconWasap"><i class="bi bi-whatsapp"></i></li>
+                    <li id="iconInsta"><i class="bi bi-instagram"></i></li>
+                    <li id="iconTwiter"><i class="bi bi-twitter"></i></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5>Otros</h5>
+                <ul class="list-unstyled">
+                    <li>Ayuda</li>
+                    <li>Manual del sistema</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <p class="text-center">© 2024 Anthony Maldonado, Rodrigo Vera y Alejandro Gonzalez - Todos los derechos reservados</p>
+    </div>
+</footer>
 </html>
