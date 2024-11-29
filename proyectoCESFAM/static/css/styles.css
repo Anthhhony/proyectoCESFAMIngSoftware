@@ -8,18 +8,26 @@ h1{
 }
 .navbar a:hover {
     transition: 0.2s;
-    box-shadow: 0 0 8px #00318d;
-    padding: 5px;
+    box-shadow: 0 0 8px #ffffff;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 8px;
     font-size: 20px;
     border-radius: 8px;
 }
 
+.navbar a:not(:hover) {
+    transition: 0.2s;
+    text-shadow: 2px 2px 8px #002873;
+    font-size: 20px;
+}
 
 
 li:hover{
     transition: 0.2s;
     color: #255dc5;
     border-bottom: solid #255dc5;
+    font-weight: bold;
     font-size: 18px;
 }
 li:not(:hover){
@@ -107,6 +115,35 @@ li:not(:hover){
 }
 th{
     background-color: #4A148C;
+}
+
+#iconWasap:hover{
+    transition: 0.2s;
+    color: rgb(37 211 102);
+    border-bottom: rgb(37 211 102) solid;
+}
+#iconWasap:not(:hover){
+    transition: 0.2s;
+}
+
+#iconInsta:hover{
+    transition: 0.2s;
+    background: linear-gradient(to right, #f09433, #e55d87);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    border-bottom: coral solid;
+}
+#iconInsta:not(:hover){
+    transition: 0.2s;
+}
+
+#iconTwiter:hover{
+    transition: 0.2s;
+    color: rgb(29 161 242);
+    border-bottom: rgb(29 161 242) solid;
+}
+#iconTwiter:not(:hover){
+    transition: 0.2s;
 }
 
 
