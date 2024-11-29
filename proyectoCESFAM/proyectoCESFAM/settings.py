@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'db_cesfam',
         'USER': 'cesfamAdmin',
-        'PASSWORD': 'cesfamAdmin123',
+        'PASSWORD': 'cesfam123',
         'HOST': 'db-cesfam-instance.c5eoo4euss03.us-east-2.rds.amazonaws.com',
         'PORT': '3306',
         'OPTIONS':{

@@ -18,11 +18,11 @@ def vista(request):
 def buscar_usuario(request):
     if request.method == "POST":
         rut = request.POST.get('rut')
-        contrasena = request.POST.get('contrasena')
+        password = request.POST.get('password')
         
         usuario = Usuario.objects.filter(rut=rut).first()
         
-        if usuario and check_password(contrasena, usuario.contrasena):
+        if usuario and check_password(password, usuario.password):
             return render(request, "templatesApp/menu.html")
         else:
             messages.error(request, "R.U.N o contraseña incorrecta.")
@@ -34,10 +34,10 @@ def buscar_usuario(request):
 def register(request):
     if request.method == 'POST':
         rut = request.POST.get('rut')
-        contrasena = request.POST.get('contrasena')
+        password = request.POST.get('password')
         password2 = request.POST['password2']
 
-        if contrasena != password2:
+        if password != password2:
             messages.error(request, "Las contraseñas no coinciden.")
             return redirect('registrar-usuario')
 
@@ -48,7 +48,7 @@ def register(request):
 
         # Crear el nuevo usuario con contraseña encriptada
         if not Usuario.objects.filter(rut=rut).exists():
-            usuario = Usuario(rut=rut, contrasena=make_password(contrasena))
+            usuario = Usuario(rut=rut, password=make_password(password))
             usuario.save()
             messages.success(request, "Usuario registrado exitosamente.")
             return redirect('buscar-usuario')

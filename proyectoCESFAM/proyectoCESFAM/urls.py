@@ -24,8 +24,10 @@ urlpatterns = [
     path('register/', register, name='registrar-usuario'),
     path('', buscar_usuario, name='buscar-usuario'),
     path('menu/', vista, name='menu-principal'),
-    path('prestamo/',agregarDoc, name='lista-prestamo'),#
-    path('prestamosProcesados/', lista_asignaciones, name='prestamos-confirmados'),#
-    path('libros/', agregarInstitucion, name='mostrar-libros'),#
-    path('clientes/', lista_alertas, name='mostrar-clientes'),#
+    path('Documentos/', lista_documentos , name='lista-documentos'),
+    path('agregarDocumento/', agregarDoc , name='agregar-documentos'),#
+    path('asignaciones/', lista_asignaciones, name='lista-asignaciones'),#
+    path('Instituciones/', lista_instituciones , name='lista-instituciones'),
+    path('agregarInstitucion/', agregarInstitucion, name='agregar-institucion'),#
+    path('alertas/', lista_alertas, name='alertas'),#
 ]
