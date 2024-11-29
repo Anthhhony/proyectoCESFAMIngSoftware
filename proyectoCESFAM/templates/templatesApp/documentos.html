@@ -40,17 +40,106 @@
       </ul>
 
     <h1 class="mb-4" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center; margin: 10px;">Documentos</h1>
-    <div class="container">
-        <div class="alert alert-info text-center">Agregar Documento</div>
-            <form method="post">
-                {{ form.as_p }}
-                {% csrf_token %}
-                <input type="submit" value="Agregar" class="btn btn-info">
-            </form>
-            <div class="back-btn-container">
-                <a href="{%url 'menu-principal' %}" class="btn btn-info">ATRAS</a>
+    {% if documentos %}
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <!-- Barra de búsqueda -->
+            <div class="input-group w-50">
+                <input type="text" class="form-control" placeholder="Buscar documentos..." aria-label="Buscar documentos" id="search-input">
+                <button class="btn btn-outline-secondary" type="button" id="search-button">
+                    <i class="bi bi-search"></i> <!-- Ícono de búsqueda -->
+                </button>
             </div>
+            
+            <!-- Botón de agregar documento -->
+            <a href="{% url 'agregar-documentos' %}" class="btn btn-success">
+                <i class="bi bi-plus-circle"></i> Agregar documentos
+            </a>
         </div>
     </div>
+    <br/>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark" >
+            <tr>
+                <th>ID Documento</th>
+                <th>Tipo documento</th>
+                <th>Institución</th>
+                <th>Motivo</th>
+                <th>Fecha Ingreso a sistema</th>
+                <th>Fecha documento</th>
+                <th>Valor monetario</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for documento in documentos %}
+            <tr>
+                <td>{{ documento.id_documento }}</td>
+                <td>{{ documento.id_tipodoc }}</td>
+                <td>{{ documento.id_institucion.nombre }}</td>
+                <td>{{ documento.motivo }}</td>
+                <td>{{ documento.fecha_ingreso }}</td>
+                <td>{{ documento.fecha_documento }}</td>
+                <td>$ {{ documento.valor_monetario }}</td>
+                <td>
+                    {% if documento.id_documento %}
+                    <a href="{% url 'editar-documento' documento.id_documento %}" class="btn btn-warning">Editar</a>
+                    <a href="{% url 'eliminar-documento' documento.id_documento %}" class="btn btn-danger">Eliminar</a>
+                    {% else %}
+                    <span>ID NO DISPONIBLE</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <div class="alert alert-warning" role="alert" style="text-align: center; width: 50%; margin: 0 auto;">
+          <h4 class="alert-heading">No hay documentos registrados en el sistema</h4>
+          <i class="bi bi-exclamation-circle" style="font-size: 30px;"></i>
+          <br/>
+          <a href="{%url 'agregar-documentos' %}" class="btn btn-primary mb-3">Agregar documento</a>
+      </div>
+      {% endif %}
 </body>
+<br/>
+<footer class="bg-dark text-light py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h5>¿Qué ofrecemos?</h5>
+                <ul class="list-unstyled">
+                    <li>Organizacion</li>
+                    <li>Formacion</li>
+                    <li>Optimizacion</li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5>Maestros Involucrados</h5>
+                <ul class="list-unstyled">
+                    <li>Anthony Maldonado</li>
+                    <li>Rodrigo Vera</li>
+                    <li>Alejandro Gonzalez</li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5>¡Contactanos!</h5>
+                <ul class="list-unstyled d-flex gap-3">
+                    <li id="iconWasap"><i class="bi bi-whatsapp"></i></li>
+                    <li id="iconInsta"><i class="bi bi-instagram"></i></li>
+                    <li id="iconTwiter"><i class="bi bi-twitter"></i></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5>Otros</h5>
+                <ul class="list-unstyled">
+                    <li>Ayuda</li>
+                    <li>Manual del sistema</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <p class="text-center">© 2024 Anthony Maldonado, Rodrigo Vera y Alejandro Gonzalez - Todos los derechos reservados</p>
+    </div>
+</footer>
 </html>
