@@ -1,4 +1,5 @@
 from datetime import date
+from django.utils.timezone import now
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from AppCESFAM.models import Usuario, Documento, Asignacion, TipoDocumento, Institucion, Alerta
 from . import forms
@@ -220,9 +221,23 @@ def eliminarInstitucion(request, id):
 
 #####
 
-def lista_alertas(request):
 
-    return render(request, 'templatesApp/alertas.html')
+def verificar_documentos_vencidos(request):
+    # Obtener los documentos cuya fecha actual ha sobrepasado su fecha estipulada
+    documentos_vencidos = Documento.objects.filter(fecha_documento__lt=now().date())
+
+    # Registrar las alertas para cada documento vencido
+    for documento in documentos_vencidos:
+        # Verificar si ya existe una alerta para evitar duplicados
+        if not Alerta.objects.filter(documento=documento).exists():
+            Alerta.objects.create(
+                documento=documento,
+                mensaje=f"El documento con ID {documento.id_documento} ha vencido."
+            )
+
+    # Obtener todas las alertas para mostrar en el template
+    alertas = Alerta.objects.all()
+    return render(request, 'templatesApp/alertas.html', {'alertas': alertas})
 
 def verificar_documentos_vencidos(request):
 

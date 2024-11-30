@@ -12,36 +12,48 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand logo" href="{%url "menu-principal" %}">
+            <a class="navbar-brand logo" href="{% url 'menu-principal' %}">
                 <i class="bi bi-book"></i> 
                 <h3>CESFAM - Caldera</h3>
             </a>
             <div class="div-imagenLogoCaldera">
-                <img  class="imagenLogoCaldera" src="{% static 'img/PngItem_5278850.png'%}">
+                <img class="imagenLogoCaldera" src="{% static 'img/PngItem_5278850.png' %}">
             </div>
-            
         </div>
     </nav>
-    <!-- SECCIONES -->
 
     <ul class="nav nav-pills nav-fill">
-        <li class="nav-item">
-          <a class="nav-link" href="{%url 'lista-documentos' %}">Documentos</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{%url 'lista-asignaciones' %}">Asignaciones</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{%url 'lista-instituciones' %}">Instituciones</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{%url 'lista-alertas' %}">Alertas</a>
-        </li>
-        
-      </ul>
-      
+        <li class="nav-item"><a class="nav-link" href="{% url 'lista-documentos' %}">Documentos</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'lista-asignaciones' %}">Asignaciones</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'lista-instituciones' %}">Instituciones</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'lista-alertas' %}">Alertas</a></li>
+    </ul>
 
-    <h1 class="mb-4" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center; margin: 10px;">Alertas</h1>
+    <h1 class="mb-4" style="text-align: center;">Alertas de Documentos Vencidos</h1>
 
+    <div class="container">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark" >
+                <tr>
+                    <th>ID Documento</th>
+                    <th>Motivo</th>
+                    <th>Fecha del Documento</th>
+                    <th>Fecha de Alerta</th>
+                    <th>Mensaje</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alerta in alertas %}
+                <tr>
+                    <td>{{ alerta.documento.id_documento }}</td>
+                    <td>{{ alerta.documento.motivo }}</td>
+                    <td>{{ alerta.documento.fecha_documento }}</td>
+                    <td>{{ alerta.fecha_alerta }}</td>
+                    <td>{{ alerta.mensaje }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
