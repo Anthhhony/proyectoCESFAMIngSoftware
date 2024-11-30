@@ -126,24 +126,26 @@ def agregarTipoDoc(request):
         'agregar-documentos'
     )
 
-def editarDoc(request, pk):
-    documento = get_object_or_404(Documento, pk=id)
-    titulo = 'Editar'
+def editarDoc(request, id):
+    documento = get_object_or_404(Documento, id_documento=id)
+    titulo = 'Editar Documento'
+    
     if request.method == 'POST':
         form = FormularioDoc(request.POST, instance=documento)
         if form.is_valid():
             form.save()
-            return redirect(lista_documentos)
-        else:
-            form = FormularioDoc(instance=documento)
-    return render(request, 'templatesApp/formularios.html',{
-                    'form':form,
-                    'documento':documento,
-                    'titulo':titulo,
-                   })
+            return redirect('lista-documentos')  # Ajusta el nombre de la URL según tu configuración
+    else:
+        form = FormularioDoc(instance=documento)  # Siempre define `form` para GET
+    
+    return render(request, 'templatesApp/formularios.html', {
+        'form': form,
+        'documento': documento,
+        'titulo': titulo,
+    })
 
-def eliminarDoc(request, pk):
-    documento = get_object_or_404(Documento, pk=id)
+def eliminarDoc(request, id):
+    documento = get_object_or_404(Documento, id_documento=id)
     if request.method == 'POST':
         documento.delete()
         return redirect(lista_documentos)
@@ -168,6 +170,33 @@ def lista_instituciones(request):
     data = {'instituciones': instituciones}
     return render(request,'templatesApp/instituciones.html', data)
 
+####
+
+def editarInstitucion(request, id):
+    institucion = get_object_or_404(Institucion, id_institucion=id)
+    titulo = 'Editar Institución'
+    if request.method == 'POST':
+        form = FormularioInstitucion(request.POST, instance=institucion)
+        if form.is_valid():
+            form.save()
+            return redirect('lista-instituciones')  # Redirigir a la lista de instituciones
+    else:
+        form = FormularioInstitucion(instance=institucion)
+    return render(request, 'templatesApp/formularios.html', {
+        'form': form,
+        'institucion': institucion,
+        'titulo': titulo,
+    })
+
+def eliminarInstitucion(request, id):
+    institucion = get_object_or_404(Institucion, id_institucion=id)
+    if request.method == 'POST':
+        institucion.delete()
+        return redirect('lista-instituciones')  # Redirigir a la lista de instituciones
+    return render(request, 'templatesApp/eliminar_confirmacion.html', {'institucion': institucion})
+
+
+#####
 
 def lista_alertas(request):
 
