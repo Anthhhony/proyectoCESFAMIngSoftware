@@ -3,6 +3,7 @@ from django.utils.timezone import now
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from AppCESFAM.models import Usuario, Documento, Asignacion, TipoDocumento, Institucion, Alerta
 from . import forms
+from django.utils.timezone import now
 from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth.hashers import make_password, check_password
@@ -159,11 +160,32 @@ def lista_documentos(request):
     data = {'documentos': documentos}
     return render(request, 'templatesApp/documentos.html', data)
 
+def crear_asignacion(request):
+        return formulario_generico(
+            request,
+            forms.FormularioAsignacion,
+            "Agregar Asignación",
+            'lista-asignaciones'
+    )
+
+def actualizar_asignacion(request, pk):
+    asignacion = get_object_or_404(Asignacion, pk=pk)
+    titulo = 'Editar Asignación'
+    if request.method == "POST":
+        formulario = FormularioAsignacion(request.POST, instance=asignacion)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('lista_asignaciones')
+    else:
+        formulario = FormularioAsignacion(instance=asignacion)
+    return render(request, 'templatesApp/formularios.html', {'formulario': formulario, 'titulo':titulo, 'asignacion':asignacion})
+
+
 
 def lista_asignaciones(request):
+    asignaciones = Asignacion.objects.all()
+    return render(request, 'templatesApp/asignaciones.html', {'asignaciones': asignaciones})
 
-
-    return render(request, 'templatesApp/asignaciones.html')
 
     
 def lista_instituciones(request):
@@ -217,6 +239,22 @@ def verificar_documentos_vencidos(request):
     alertas = Alerta.objects.all()
     return render(request, 'templatesApp/alertas.html', {'alertas': alertas})
 
+def verificar_documentos_vencidos(request):
+
+    documentos_vencidos = Documento.objects.filter(fecha_documento__lt=now().date())
+
+
+    for documento in documentos_vencidos:
+
+        if not Alerta.objects.filter(documento=documento).exists():
+            Alerta.objects.create(
+                documento=documento,
+                mensaje=f"El documento con ID {documento.id_documento} ha vencido."
+            )
+
+
+    alertas = Alerta.objects.all()
+    return render(request, 'templatesApp/alertas.html', {'alertas': alertas})
 
 
     

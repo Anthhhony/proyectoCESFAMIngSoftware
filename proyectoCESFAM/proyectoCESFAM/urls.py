@@ -17,6 +17,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from AppCESFAM.views import vista, crear_asignacion, lista_documentos, lista_asignaciones, lista_instituciones, register, buscar_usuario, lista_alertas, agregarDoc,agregarInstitucion, agregarTipoDoc, editarDoc, eliminarDoc, editarInstitucion, eliminarInstitucion
 from AppCESFAM.views import vista, lista_documentos, lista_asignaciones, lista_instituciones, register, buscar_usuario, agregarDoc,agregarInstitucion, agregarTipoDoc, editarDoc, eliminarDoc, editarInstitucion, eliminarInstitucion, verificar_documentos_vencidos
 
 urlpatterns = [
@@ -30,6 +31,7 @@ urlpatterns = [
     path('EliminarDocumento/<int:id>/', eliminarDoc, name='eliminar-documento'),#
     path('asignaciones/', lista_asignaciones, name='lista-asignaciones'),#
     path('Instituciones/', lista_instituciones , name='lista-instituciones'),
+    path('agregarAsignaciones/', crear_asignacion , name='agregar-asignacion'),
     path('agregarInstituciones/', agregarInstitucion, name='agregar-institucion'),
     path('editarInstitucion/<int:id>/', editarInstitucion, name='editar-institucion'),####
     path('eliminarInstitucion/<int:id>/', eliminarInstitucion, name='eliminar-institucion'),####

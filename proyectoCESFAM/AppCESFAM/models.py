@@ -189,11 +189,7 @@ class Asignacion(models.Model):
     # Relación con `Usuario`, se elimina la asignación si el usuario se elimina.
 
     id_documento = models.ForeignKey(Documento, on_delete=models.CASCADE)
-    # Relación con `Documento`, se elimina la asignación si el documento se elimina.
-
-    fecha_asignacion = models.DateField()
-    # Fecha en la que se asigna el documento.
-
+    fecha_asignacion = models.DateField(default=now().date())
     estado = models.CharField(
         max_length=50,
         validators=[
