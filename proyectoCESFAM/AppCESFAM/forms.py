@@ -62,12 +62,12 @@ class FormularioDoc(forms.ModelForm):
         self.fields['id_tipodoc'].empty_label = None
         self.fields['id_tipodoc'].choices = [('', '--- Seleccione una opción ---')] + list(
             self.fields['id_tipodoc'].choices
-        ) + [('agregar', 'Agregar tipo de documento')]
+        )
         
         self.fields['id_institucion'].empty_label = None
         self.fields['id_institucion'].choices = [('', '--- Seleccione una opción ---')] + list(
             self.fields['id_institucion'].choices
-        ) + [('agregar', 'Agregar Institución')]
+        )
         
         
 class FormularioInstitucion(forms.ModelForm):
