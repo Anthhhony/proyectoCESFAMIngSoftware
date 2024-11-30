@@ -41,6 +41,17 @@
         </form>
     </div>
 
+    {% elif institucion %}
+    <div class="container mt-5">
+        <h2>Confimar Eliminación</h2>
+        <p>¿Seguro desea eliminar la institución: "{{ institucion.nombre }}"</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+            <a href="{% url 'lista-instituciones' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+
     {% endif %}
     
 </body>

@@ -5,8 +5,6 @@ class formularioLogin(forms.Form):
     rut = forms.CharField(max_length=12)
     contrasena = forms.CharField(max_length=100)
 
-
-
 class FormularioRegister(forms.ModelForm):
     class Meta:
         model = Usuario
@@ -127,37 +125,38 @@ class FormularioTipoDoc(forms.ModelForm):
         }
         
 class FormularioAsignacion(forms.ModelForm):
-    model = Asignacion
-    fields = "__all_"
-    widgets = {
-            'id_usuario': forms.Select(
-                attrs={
-                    'class': 'form-control',
-                }
-            ),
-            'id_documento': forms.Select(
-                attrs={
-                    'class': 'form-control',
-                }
-            ),
-            'fecha_asignacion': forms.DateInput(
-                attrs={
-                    'class': 'form-control',
-                    'type': 'date',
-                }
-            ),
-            'estado': forms.TextInput(
-                attrs={
-                    'class': 'form-control',
-                    'placeholder': 'Ingrese el estado de la asignación',
-                    'maxlength': 50,
-                }
-            ),
-            'nota': forms.Textarea(
-                attrs={
-                    'class': 'form-control',
-                    'placeholder': 'Notas adicionales (opcional)',
-                    'rows': 3,
-                }
-            )
-        }
+    class Meta:
+        model = Asignacion
+        fields = "__all__"
+        widgets = {
+                'id_usuario': forms.Select(
+                    attrs={
+                        'class': 'form-control',
+                    }
+                ),
+                'id_documento': forms.Select(
+                    attrs={
+                        'class': 'form-control',
+                    }
+                ),
+                'fecha_asignacion': forms.DateInput(
+                    attrs={
+                        'class': 'form-control',
+                        'type': 'date',
+                    }
+                ),
+                'estado': forms.TextInput(
+                    attrs={
+                        'class': 'form-control',
+                        'placeholder': 'Ingrese el estado de la asignación',
+                        'maxlength': 50,
+                    }
+                ),
+                'nota': forms.Textarea(
+                    attrs={
+                        'class': 'form-control',
+                        'placeholder': 'Notas adicionales (opcional)',
+                        'rows': 3,
+                    }
+                )
+            }

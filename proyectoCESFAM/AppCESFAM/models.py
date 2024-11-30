@@ -143,7 +143,7 @@ class Asignacion(models.Model):
     id_asignacion = models.AutoField(primary_key=True)
     id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     id_documento = models.ForeignKey(Documento, on_delete=models.CASCADE)
-    fecha_asignacion = models.DateField()
+    fecha_asignacion = models.DateField(default=now().date())
     estado = models.CharField(
         max_length=50,
         validators=[
@@ -157,3 +157,18 @@ class Asignacion(models.Model):
 
     def __str__(self):
         return f"Asignación {self.id_asignacion}"
+    
+    
+class Alerta(models.Model):
+    documento = models.OneToOneField('Documento', on_delete=models.CASCADE)
+    # Relación uno a uno con Documento, se elimina la alerta si el documento se elimina.
+
+    fecha_alerta = models.DateField(auto_now_add=True)
+    # Fecha de creación de la alerta, asignada automáticamente.
+
+    mensaje = models.TextField(default="Documento vencido")
+    # Mensaje de la alerta, con valor predeterminado.
+
+    def str(self):
+        return f"Alerta para Documento {self.documento.id_documento}"
+    # Representación textual de la alerta.

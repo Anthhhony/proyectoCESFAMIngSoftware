@@ -39,6 +39,41 @@
       </ul>
 
     <h1 class="mb-4" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center; margin: 10px;">Asignaciones</h1>
+    <div class="container my-4">
 
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Usuario</th>
+                        <th>Documento</th>
+                        <th>Estado</th>
+                        <th>Notas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for asignacion in asignaciones %}
+                    <tr>
+                        <td>{{ asignacion.id_asignacion }}</td>
+                        <td>{{ asignacion.id_usuario }}</td>
+                        <td>{{ asignacion.id_documento }}</td>
+                        <td>{{ asignacion.estado }}</td>
+                        <td>{{ asignacion.nota }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'agregar-asignacion' %}" class="btn btn-success">
+                Crear Nueva Asignación
+            </a>
+        </div>
+    </div>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    
 </body>
 </html>
