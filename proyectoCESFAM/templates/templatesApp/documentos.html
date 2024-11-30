@@ -44,12 +44,12 @@
     <div class="container mt-4">
         <div class="d-flex justify-content-between align-items-center">
             <!-- Barra de búsqueda -->
-            <div class="input-group w-50">
+            <!-- <div class="input-group w-50">
                 <input type="text" class="form-control" placeholder="Buscar documentos..." aria-label="Buscar documentos" id="search-input">
                 <button class="btn btn-outline-secondary" type="button" id="search-button">
-                    <i class="bi bi-search"></i> <!-- Ícono de búsqueda -->
+                    <i class="bi bi-search"></i>
                 </button>
-            </div>
+            </div> -->
             
             <!-- Botón de agregar documento -->
             <a href="{% url 'agregar-documentos' %}" class="btn btn-success">
@@ -103,43 +103,5 @@
       {% endif %}
 </body>
 <br/>
-<footer class="bg-dark text-light py-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <h5>¿Qué ofrecemos?</h5>
-                <ul class="list-unstyled">
-                    <li>Organizacion</li>
-                    <li>Formacion</li>
-                    <li>Optimizacion</li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <h5>Maestros Involucrados</h5>
-                <ul class="list-unstyled">
-                    <li>Anthony Maldonado</li>
-                    <li>Rodrigo Vera</li>
-                    <li>Alejandro Gonzalez</li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <h5>¡Contactanos!</h5>
-                <ul class="list-unstyled d-flex gap-3">
-                    <li id="iconWasap"><i class="bi bi-whatsapp"></i></li>
-                    <li id="iconInsta"><i class="bi bi-instagram"></i></li>
-                    <li id="iconTwiter"><i class="bi bi-twitter"></i></li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <h5>Otros</h5>
-                <ul class="list-unstyled">
-                    <li>Ayuda</li>
-                    <li>Manual del sistema</li>
-                </ul>
-            </div>
-        </div>
-        <hr>
-        <p class="text-center">© 2024 Anthony Maldonado, Rodrigo Vera y Alejandro Gonzalez - Todos los derechos reservados</p>
-    </div>
-</footer>
+
 </html>
