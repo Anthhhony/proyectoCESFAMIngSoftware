@@ -135,9 +135,9 @@ def editarDoc(request, id):
         form = FormularioDoc(request.POST, instance=documento)
         if form.is_valid():
             form.save()
-            return redirect('lista-documentos')  # Ajusta el nombre de la URL según tu configuración
+            return redirect('lista-documentos')  
     else:
-        form = FormularioDoc(instance=documento)  # Siempre define `form` para GET
+        form = FormularioDoc(instance=documento)  
     
     return render(request, 'templatesApp/formularios.html', {
         'form': form,
@@ -201,19 +201,19 @@ def eliminarInstitucion(request, id):
 
 
 def verificar_documentos_vencidos(request):
-    # Obtener los documentos cuya fecha actual ha sobrepasado su fecha estipulada
+
     documentos_vencidos = Documento.objects.filter(fecha_documento__lt=now().date())
 
-    # Registrar las alertas para cada documento vencido
+
     for documento in documentos_vencidos:
-        # Verificar si ya existe una alerta para evitar duplicados
+
         if not Alerta.objects.filter(documento=documento).exists():
             Alerta.objects.create(
                 documento=documento,
                 mensaje=f"El documento con ID {documento.id_documento} ha vencido."
             )
 
-    # Obtener todas las alertas para mostrar en el template
+
     alertas = Alerta.objects.all()
     return render(request, 'templatesApp/alertas.html', {'alertas': alertas})
 

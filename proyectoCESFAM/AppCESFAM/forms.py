@@ -6,7 +6,6 @@ class formularioLogin(forms.Form):
     contrasena = forms.CharField(max_length=100)
 
 
-
 class FormularioRegister(forms.ModelForm):
     class Meta:
         model = Usuario
