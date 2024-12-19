@@ -22,10 +22,10 @@ from AppCESFAM.views import vista, lista_documentos, lista_asignaciones, lista_i
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('register/', register, name='registrar-usuario'),
-    path('', buscar_usuario, name='buscar-usuario'),
-    path('menu/', vista, name='menu-principal'),
-    path('Documentos/', lista_documentos , name='lista-documentos'),
+    path('register/', register, name='registrar-usuario'),#
+    path('', buscar_usuario, name='buscar-usuario'),#
+    path('menu/', vista, name='menu-principal'),#
+    path('Documentos/', lista_documentos , name='lista-documentos'),#
     path('agregarDocumento/', agregarDoc , name='agregar-documentos'),#
     path('EditarDocumento/<int:id>/', editarDoc , name='editar-documento'),#
     path('EliminarDocumento/<int:id>/', eliminarDoc, name='eliminar-documento'),#
